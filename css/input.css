@@ -1,0 +1,125 @@
+@import 'tailwindcss';
+
+@theme {
+    /* Font Family */
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Inter', sans-serif;
+
+    /* Gold Colors */
+    --color-gold-50: #fdf9f0;
+    --color-gold-100: #f9efc9;
+    --color-gold-200: #f3dc8e;
+    --color-gold-300: #edc452;
+    --color-gold-400: #e9b336;
+    --color-gold-500: #d4961a;
+    --color-gold-600: #b57814;
+    --color-gold-700: #915a12;
+    --color-gold-800: #784815;
+    --color-gold-900: #653c17;
+
+    /* Navy Colors */
+    --color-navy-800: #1a1f2e;
+    --color-navy-900: #0f1219;
+    --color-navy-950: #090b10;
+
+    @keyframes pulse-gold {
+        0%,
+        100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+    }
+}
+
+@layer base {
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #0f1219;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #d4961a;
+        border-radius: 4px;
+    }
+
+    /* Text selection */
+    ::selection {
+        background: #d4961a;
+        color: #0f1219;
+    }
+}
+
+@layer utilities {
+    /* Smooth parallax helper */
+    .parallax-bg {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    /* Image hover zoom */
+    .img-zoom-container {
+        overflow: hidden;
+    }
+    .img-zoom-container img {
+        transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .img-zoom-container:hover img {
+        transform: scale(1.1);
+    }
+
+    /* Gradient text */
+    .text-gradient-gold {
+        background: linear-gradient(135deg, #f3dc8e 0%, #d4961a 50%, #b57814 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    /* Glassmorphism */
+    .glass {
+        background: rgba(15, 18, 25, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(212, 150, 26, 0.1);
+    }
+
+    /* Loader */
+    .loader-overlay {
+        position: fixed;
+        inset: 0;
+        background: #090b10;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+            opacity 0.8s ease,
+            visibility 0.8s ease;
+    }
+    .loader-overlay.hidden-loader {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    /* Animation class */
+    .animate-pulse-gold {
+        animation: pulse-gold 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    /* Overriding Swiper Styles */
+    .swiper-pagination-bullet {
+        background: #d4961a !important;
+        opacity: 0.4;
+    }
+    .swiper-pagination-bullet-active {
+        opacity: 1 !important;
+        width: 24px !important;
+        border-radius: 4px !important;
+    }
+}
